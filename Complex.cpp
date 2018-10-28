@@ -84,7 +84,12 @@ void Complex::operator/=(Complex & b)
 		  (pow(b.getReal(), 2) + pow(b.getImag(), 2));
 
 }
-//bool operator==(Complex & a, Complex & b);
+
+bool Complex::operator==(Complex & b)
+{
+	if(re == b.getReal() && im == b.getImag()) return true;
+	return false;
+}
 
 std::ostream& operator<<(std::ostream& out, Complex a)
 {
@@ -93,4 +98,24 @@ std::ostream& operator<<(std::ostream& out, Complex a)
 	else if(a.getImag() < 0) out << " - " << a.getImag() * (-1) << "i";
 	out << ")";
 	return out;
+}
+
+Complex operator+(int a, Complex & b)
+{
+	return (Complex(b.getReal() + a, b.getImag()));
+}
+
+Complex operator-(int a, Complex & b)
+{
+	return (Complex(b.getReal() + a, b.getImag()));
+}
+
+Complex operator*(int a, Complex & b)
+{
+	return (Complex(b.getReal() + a, b.getImag()));
+}
+
+Complex operator/(int a, Complex & b)
+{
+	return (Complex(b.getReal()  a, b.getImag()));
 }
