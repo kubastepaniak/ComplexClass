@@ -9,20 +9,26 @@ int main()
 	Complex b(3, -7);
 	Complex c;
 
-	//create cout display function
-	//cout << "a: " << 
+	cout << "a: " << a << endl;
+
+	cout << "amplitude of a: " << a.Amp() << endl;
+
+	cout << "phase of a: " << a.Phase() << " rad" << endl;
 
 	c = a + b;
-	cout << "addition: " << c.getReal() << ", " << c.getImag() << endl;
+	cout << "addition: " << c << endl;
 
 	c = a - b;
-	cout << "subtraction: " << c.getReal() << ", " << c.getImag() << endl;
+	cout << "subtraction: " << c << endl;
 
 	c = a * b;
-	cout << "multiplication: " << c.getReal() << ", " << c.getImag() << endl;
+	cout << "multiplication: " << c << endl;
 
 	c = a / b;
-	cout << "division: " << c.getReal() << ", " << c.getImag() << endl;
+	cout << "division: " << c << endl;
+
+	a += b;
+	cout << "new a (a += b): " << a << endl;
 
 	return 0;
 }

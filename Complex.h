@@ -7,17 +7,19 @@ public:
 	Complex();
 	~Complex();
 	Complex(double re, double im);
+	double getReal();
+	double getImag();
+	double Amp();
+	double Phase();
 	Complex operator+(Complex & b);
 	Complex operator-(Complex & b);
 	Complex operator*(Complex & b);
 	Complex operator/(Complex & b);
-//	Complex operator+=(Complex & a, Complex & b);
-//	Complex operator-=(Complex & a, Complex & b);
-//	Complex operator*=(Complex & a, Complex & b);
-//	Complex operator/=(Complex & a, Complex & b);
+	void operator+=(Complex & b);
+	void operator-=(Complex & b);
+	void operator*=(Complex & b);
+	void operator/=(Complex & b);
 //	bool operator==(Complex & a, Complex & b);
-	double getReal();
-	double getImag();
-	//double Amp();
-	//double Phase();
 };
+
+std::ostream& operator<<(std::ostream& out, Complex a);
