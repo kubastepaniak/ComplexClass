@@ -33,13 +33,27 @@ int main()
 	bool l = a == b;
 	cout << "a == b?" << endl << a << " == " << b << endl << l << endl;
 
-	cout << 7 + a;
-	/*
-	a += b += c
-	a *= b *= c
-	7 + a
-	b * 5
-	5 * b
-	*/
+	a = Complex(2, 2);
+	b = Complex(3, 3);
+	c = Complex(4, 4);
+	a += b += c;
+	cout << "a += b += c :" << endl << "new a: " << a << endl << "new b: " << b;
+
+	a = Complex(2, 2);
+	b = Complex(3, 3);
+	c = Complex(4, 4);
+	a *= b *= c;
+	cout << "a *= b *= c :" << endl << "new a: " << a << endl << "new b: " << b;
+
+	a = Complex(2, 2);
+	b = Complex(3, 3);
+	cout << "a: " << a << "\tb: " << b << endl;
+
+	cout << "7 + a: " << 7 + a << endl;
+
+	cout << "b * 5: " << b * 5 << endl;
+
+	cout << "5 * b: " << 5 * b << endl;
+	
 	return 0;
 }

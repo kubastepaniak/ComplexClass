@@ -15,10 +15,10 @@ public:
 	Complex operator-(Complex & b);
 	Complex operator*(Complex & b);
 	Complex operator/(Complex & b);
-	void operator+=(Complex & b);
-	void operator-=(Complex & b);
-	void operator*=(Complex & b);
-	void operator/=(Complex & b);
+	Complex& operator+=(Complex & b);
+	Complex& operator-=(Complex & b);
+	Complex& operator*=(Complex & b);
+	Complex& operator/=(Complex & b);
 	bool operator==(Complex & b);
 };
 
@@ -27,3 +27,7 @@ Complex operator+(int a, Complex & b);
 Complex operator-(int a, Complex & b);
 Complex operator*(int a, Complex & b);
 Complex operator/(int a, Complex & b);
+Complex operator+(Complex & b, int a);
+Complex operator-(Complex & b, int a);
+Complex operator*(Complex & b, int a);
+Complex operator/(Complex & b, int a);

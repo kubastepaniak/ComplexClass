@@ -54,27 +54,30 @@ Complex Complex::operator/(Complex & b)
 					(pow(b.getReal(), 2) + pow(b.getImag(), 2))));
 }
 
-void Complex::operator+=(Complex & b)
+Complex& Complex::operator+=(Complex & b)
 {
 	re += b.getReal();
 	im += b.getImag();
+	return this;
 }
 
-void Complex::operator-=(Complex & b)
+Complex& Complex::operator-=(Complex & b)
 {
 	re -= b.getReal();
 	im -= b.getImag();
+	return this;
 }
 
-void Complex::operator*=(Complex & b)
+Complex& Complex::operator*=(Complex & b)
 {
 	double oldReal = re;
 	double oldImag = im;
 	re = oldReal * b.getReal() + (-1)*oldImag*(b.getImag());
 	im = oldImag * b.getReal() + oldReal * b.getImag();
+	return this;
 }
 
-void Complex::operator/=(Complex & b)
+Complex& Complex::operator/=(Complex & b)
 {
 	double oldReal = re;
 	double oldImag = im;
@@ -82,7 +85,7 @@ void Complex::operator/=(Complex & b)
 		  (pow(b.getReal(), 2) + pow(b.getImag(), 2));
 	im = (oldImag * b.getReal() - oldReal * b.getImag()) / 
 		  (pow(b.getReal(), 2) + pow(b.getImag(), 2));
-
+	return this;
 }
 
 bool Complex::operator==(Complex & b)
@@ -102,20 +105,41 @@ std::ostream& operator<<(std::ostream& out, Complex a)
 
 Complex operator+(int a, Complex & b)
 {
-	return (Complex(b.getReal() + a, b.getImag()));
+	return (Complex(a + b.getReal(), b.getImag()));
 }
 
 Complex operator-(int a, Complex & b)
 {
-	return (Complex(b.getReal() + a, b.getImag()));
+	return (Complex(a - b.getReal(), -b.getImag()));
 }
 
 Complex operator*(int a, Complex & b)
 {
-	return (Complex(b.getReal() + a, b.getImag()));
+	return (Complex(a * b.getReal(), a * b.getImag()));
 }
 
 Complex operator/(int a, Complex & b)
 {
-	return (Complex(b.getReal()  a, b.getImag()));
+	return (Complex(a * b.getReal() / (pow(b.getImag(), 2) + pow(b.getReal(), 2)),
+					a * b.getImag() / (pow(b.getImag(), 2) + pow(b.getReal(), 2))));
+}
+
+Complex operator+(Complex & b, int a)
+{
+	return (Complex(b.getReal() + a, b.getImag()));
+}
+
+Complex operator-(Complex & b, int a)
+{
+	return (Complex(b.getReal() - a, b.getImag()));
+}
+
+Complex operator*(Complex & b, int a)
+{
+	return (Complex(b.getReal() * a, b.getImag() * a));
+}
+
+Complex operator/(Complex & b, int a)
+{
+	return (Complex(b.getReal() / a, b.getImag() / a));
 }
