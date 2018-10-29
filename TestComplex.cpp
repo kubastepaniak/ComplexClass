@@ -31,25 +31,25 @@ int main()
 	cout << "new a (a += b): " << a << endl << endl;
 
 	bool l = a == b;
-	cout << "a == b?" << endl << a << " == " << b << endl << l << endl;
+	cout << "a == b?" << endl << a << " == " << b << endl << l << endl << endl;
 
 	a = Complex(2, 2);
 	b = Complex(3, 3);
 	c = Complex(4, 4);
 	a += b += c;
-	cout << "a += b += c :" << endl << "new a: " << a << endl << "new b: " << b;
+	cout << "a += b += c :" << endl << "new a: " << a << endl << "new b: " << b << endl;
 
 	a = Complex(2, 2);
 	b = Complex(3, 3);
 	c = Complex(4, 4);
 	a *= b *= c;
-	cout << "a *= b *= c :" << endl << "new a: " << a << endl << "new b: " << b;
+	cout << "a *= b *= c :" << endl << "new a: " << a << endl << "new b: " << b << endl << endl;
 
 	a = Complex(2, 2);
 	b = Complex(3, 3);
 	cout << "a: " << a << "\tb: " << b << endl;
 
-	cout << "7 + a: " << 7 + a << endl;
+	cout << "7 + a: " << a + 7 << endl;
 
 	cout << "b * 5: " << b * 5 << endl;
 
