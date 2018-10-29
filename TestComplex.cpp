@@ -49,7 +49,7 @@ int main()
 	b = Complex(3, 3);
 	cout << "a: " << a << "\tb: " << b << endl;
 
-	cout << "7 + a: " << a + 7 << endl;
+	cout << "7 + a: " << 7 + a << endl;
 
 	cout << "b * 5: " << b * 5 << endl;
 

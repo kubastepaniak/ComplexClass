@@ -16,9 +16,9 @@ Complex::Complex(const Complex& a)
 
 Complex::~Complex() {}
 
-double Complex::getReal() const {	return re; }
+double Complex::getReal() const { return re; }
 
-double Complex::getImag() const {	return im; }
+double Complex::getImag() const { return im; }
 
 double Complex::Amp()
 {
@@ -30,92 +30,61 @@ double Complex::Phase()
 	return atan(im / re);
 }
 
-Complex Complex::operator+(const Complex& b)
+Complex& Complex::operator+=(const Complex& b)
 {
-	return (Complex(re + b.re, im + b.im));
-}
-
-Complex Complex::operator-(const Complex & b)
-{
-	return (Complex(re - b.re, im - b.im));
-}
-
-Complex Complex::operator*(const Complex & b)
-{
-	return (Complex(re * b.re + (-1)*(im)*(b.im), 
-					im * b.re + re * b.im));
-}
-
-Complex Complex::operator/(const Complex & b)
-{
-	return (Complex((re * b.re + im * b.im) / 
-					(pow(b.re, 2) + pow(b.im, 2)),
-					(im * b.re - re * b.im) / 
-					(pow(b.re, 2) + pow(b.im, 2))));
-}
-
-Complex& Complex::operator+=(const Complex & b)
-{
-	re += b.re;
-	im += b.im;
+	*this = *this + b;
 	return *this;
 }
 
-Complex& Complex::operator-=(const Complex & b)
+Complex& Complex::operator-=(const Complex& b)
 {
-	re -= b.re;
-	im -= b.im;
+	*this = *this - b;
 	return *this;
 }
 
-Complex& Complex::operator*=(const Complex & b)
+Complex& Complex::operator*=(const Complex& b)
 {
-	double oldReal = re;
-	double oldImag = im;
-	re = oldReal * b.re + (-1)*oldImag*(b.im);
-	im = oldImag * b.re + oldReal * b.im;
+	*this = *this * b;
 	return *this;
 }
 
-Complex& Complex::operator/=(const Complex & b)
+Complex& Complex::operator/=(const Complex& b)
 {
-	double oldReal = re;
-	double oldImag = im;
-	re = (oldReal * b.re + oldImag * b.im) / 
-		  (pow(b.re, 2) + pow(b.im, 2));
-	im = (oldImag * b.re - oldReal * b.im) / 
-		  (pow(b.re, 2) + pow(b.im, 2));
+	*this = *this / b;
 	return *this;
 }
 
-bool Complex::operator==(Complex & b)
+bool Complex::operator==(const Complex& b)
 {
 	if(re == b.re && im == b.im) return true;
 	return false;
 }
 
-Complex operator+(double a, Complex & b)
+Complex operator+(const Complex& a, const Complex& b)
 {
-	return Complex(a + b.getReal(), b.getImag());
+	return Complex(a.re + b.re, a.im + b.im);
 }
 
-Complex operator-(double a, Complex & b)
+Complex operator-(const Complex& a, const Complex& b)
 {
-	return Complex(a - b.getReal(), -b.getImag());
+	return Complex(a.re - b.re, a.im - b.im);
 }
 
-Complex operator*(double a, Complex & b)
+Complex operator*(const Complex& a, const Complex& b)
 {
-	return Complex(a * b.getReal(), a * b.getImag());
+	return Complex(a.re * b.re + (-1) * a.im * b.im, 
+				   a.im * b.re + a.re * b.im);
 }
 
-Complex operator/(double a, Complex & b)
+Complex operator/(const Complex& a, const Complex& b)
 {
-	return Complex(a * b.getReal() / (pow(b.getReal(), 2) + pow(b.getImag(), 2)),
-				   a * b.getImag() / (pow(b.getReal(), 2) + pow(b.getImag(), 2)));
+	return Complex((a.re * b.re + a.im * b.im) / 
+				   (pow(b.re, 2) + pow(b.im, 2)),
+				   (a.im * b.re - a.re * b.im) / 
+				   (pow(b.re, 2) + pow(b.im, 2)));
 }
 
-std::ostream& operator<<(std::ostream& out, Complex a)
+std::ostream& operator<<(std::ostream& out, const Complex& a)
 {
 	out << a.re;
 	if(a.im > 0) out << " + " << a.im << "i";
